@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Ninja Gold</title>
+	<style type="text/css">
+		
+		.locations{
+			height: 200px;
+			width: 150px;
+			border: 5px	 solid black;
+			text-align: center;
+			vertical-align: top;
+			display: inline-block;
+			margin-left: 75px;
+		}
+		.log{
+			width: 600px;
+			height: 200px;
+			margin: 10px;
+			border: 2px solid black;
+			overflow: scroll;
+		}
+		.won, .lost{
+			padding: 0px;
+			margin: 0px;
+			display: block;
+		}
+		.won{
+			color: green;
+		}
+		.lost{
+			color: red;
+		}
+		.container{
+			background-color: lightgray;
+			width: 1000px;
+			border: 5px solid black;				
+			margin-left: auto;
+			margin-right: auto;
+		}
+	</style>
+</head>
+<body>
+	<div class = "container">
+		<h1>Ninja Gold Game</h1>
+		<p>Your Gold: {{ data['gold'] }}</p>
+
+		<div class='locations_wrapper'>
+			
+			<div class='locations'>
+				<h2>Farm</h2>
+				<p>earns 10-20 gold!</p>
+				<form action='/process_money' method='post'>
+					<input type="hidden" name="building" value='Farm'>
+					<input type="submit" value='Find gold!!'>
+				</form>
+			</div>
+
+			<div class='locations'>
+				<h2>Cave</h2>
+				<p>earns 5-10 gold!</p>
+				<form action='/process_money' method='post'>
+					<input type="hidden" name="building" value='Cave'>
+					<input type="submit" value='Find gold!!'>
+				</form>
+			</div>
+
+			<div class='locations'>
+				<h2>House</h2>
+				<p>earns 2-5 gold!</p>
+				<form action='/process_money' method='post'>
+					<input type="hidden" name="building" value='House'>
+					<input type="submit" value='Find gold!!'>
+				</form>
+			</div>
+
+			<div class='locations'>
+				<h2>Casino</h2>
+				<p>gives or takes 0-50 gold!</p>
+				<form action='/process_money' method='post'>
+					<input type="hidden" name="building" value='Casino'>
+					<input type="submit" value='Find gold!!'>
+				</form>
+			</div>
+
+
+		</div>
+
+		<div class='log'>
+			
+			{{ data['log'] | safe}}
+
+		</div>
+	</div>
+</body>
+</html>
